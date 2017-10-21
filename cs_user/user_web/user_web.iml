@@ -24,7 +24,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module" module-name="user_service" />
+    <orderEntry type="module" module-name="cs_user_service" />
     <orderEntry type="module" module-name="cs_core" />
     <orderEntry type="module" module-name="cs_pojo" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.2.5.RELEASE" level="project" />
