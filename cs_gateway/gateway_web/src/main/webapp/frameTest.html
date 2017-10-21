@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="zh">
+<head>
+
+  <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+  <title>框架测试页面</title>
+  <meta content="Cloud" name="author">
+
+  <script src="./js/jquery-3.2.1.min.js"></script>
+  <script src="./js/frameTest.js"></script>
+
+</head>
+<body>
+
+<!-- 表格1：展示服务注册的结果 -->
+<table style="text-align: left; width: 100%; height: 214px;" border="1" cellpadding="5" cellspacing="0">
+  <tbody>
+  <tr>
+    <th style="text-align: left; color: #ff0816; height: 3px; " colspan="2">一:&nbsp;&nbsp;查看服务注册结果</th>
+  </tr>
+  <tr>
+    <th style="width: 500px; height: 20px; text-align: center;">查看服务注册结果--<button id="buttonServiceDiscoverCached">ServiceCall方式(order.get)</button></th>
+    <th style="width: 500px; height: 20px; text-align: center;">查看服务注册结果--<button id="buttonServiceDiscoverZookeeper">实时Zookeeper方式(所有服务)</button></th>
+  </tr>
+  <tr>
+    <td style="width: 500px; height: 50px; text-align: left; color: blue;" id="tdServiceDiscoverCached"></td>
+    <td style="width: 500px; height: 50px; text-align: left; color: blue;" id="tdServiceDiscoverZookeeper"></td>
+  </tr>
+  </tbody>
+</table>
+<br>
+
+<!-- 表格2：展示Web服务资源 -->
+<table style="text-align: left; width: 100%; height: 214px;" border="1" cellpadding="5" cellspacing="0">
+  <tbody>
+  <tr>
+    <th style="text-align: left; color: #ff0816; height: 3px; " colspan="2">二:&nbsp;&nbsp;监控服务器资源</th>
+  </tr>
+  <tr>
+    <th style="width: 500px; height: 10px; text-align: center;"><button id="buttonGatewayRes">开启监控Gateway服务资源</button></th>
+    <th style="width: 500px; height: 10px; text-align: center;"><button id="buttonOrderA">开启监控OrderA服务资源(微服务方式调用)</button></th>
+    <th style="width: 500px; height: 10px; text-align: center;"><button id="buttonOrderB">开启监控OrderB服务资源(微服务方式调用)</button></th>
+  </tr>
+  <tr>
+    <td style="width: 500px; height: 50px; text-align: left; color: #ee11ff;" id="tdGatewayRes"></td>
+    <td style="width: 500px; height: 50px; text-align: left; color: #ee11ff;" id="tdOrderA"></td>
+    <td style="width: 500px; height: 50px; text-align: left; color: #ee11ff;" id="tdOrderB"></td>
+  </tr>
+  </tbody>
+</table>
+<br>
+
+<!-- 表格3：轮训查看所有ServiceCall调用监控结果(GateWay为发起方) -->
+<table style="text-align: left; width: 100%; height: 214px;" border="1" cellpadding="5" cellspacing="0">
+  <tbody>
+  <tr>
+    <th style="text-align: left; color: #ff0816; height: 3px; ">三:&nbsp;&nbsp;轮训查看所有ServiceCall调用监控结果(GateWay为发起方)&nbsp;&nbsp;<button id="buttonServiceCallResultButton">开始轮训查看</button></th>
+  </tr>
+  <tr>
+    <td style="width: 500px; height: 50px; text-align: left; color: #ff0816;" id="tdServiceCallResultButton"></td>
+  </tr>
+  </tbody>
+</table>
+<br>
+
+<!-- 表格4：模拟服务调用：正常，失败，超时，异常接口 -->
+<table style="text-align: left; width: 100%; height: 214px;" border="1" cellpadding="5" cellspacing="0">
+  <tbody>
+  <tr>
+    <th style="text-align: left; color: #ff0816; height: 3px; " colspan="2">四:&nbsp;&nbsp;调试服务调用返回类型：正常，失败，超时，异常接口(注意看ServiceCall调用监控结果)</th>
+  </tr>
+  <tr>
+    <td style="width: 500px; height: 50px; text-align: left; color: #ee11ff;">
+      <button id="bDebugRestNormal">直接调用--正常接口</button><br/><br/>
+      <button id="bDebugRestFail">直接调用--失败(状态)接口</button><br/><br/>
+      <button id="bDebugRestTimeout">直接调用--超时(18S)接口</button><br/><br/>
+      <button id="bDebugRestException">直接调用--异常接口</button><br/>
+    </td>
+    <td style="width: 500px; height: 50px; text-align: left; color: #ee11ff;">
+      <button id="bDebugHystrixNormal">服务隔离--正常接口</button><br/><br/>
+      <button id="bDebugHystrixFail">服务隔离--失败(状态)接口</button><br/><br/>
+      <button id="bDebugHystrixTimeout">服务隔离--超时(18S)接口</button><br/><br/>
+      <button id="bDebugHystrixException">服务隔离--异常接口</button><br/><br/>
+      <button id="bDebugHystrixProduct">调用其他服务接口Product</button><br/>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<br>
+
+  <!-- 表格5：模拟直接访问微服务接口(可能挂死发起调用方)，模拟服务隔离访问微服务接口(不会挂死发起服务方) -->
+  <table style="text-align: left; width: 100%; height: 214px;" border="1" cellpadding="5" cellspacing="0">
+    <tbody>
+    <tr>
+      <th style="text-align: left; color: #ff0816; height: 3px; " colspan="2">五:&nbsp;&nbsp;模拟直接访问/服务隔离方式访问微服务接口(注意观察对应服务器资源)</th>
+    </tr>
+    <tr>
+      <th style="width: 500px; height: 10px; text-align: center;">模拟直接访问微服务接口(可能挂死发起调用方)(只有性能测试工具才能复现服务挂死)</th>
+      <th style="width: 500px; height: 10px; text-align: center;">模拟服务隔离访问微服务接口(不会挂死发起服务方)(只有性能测试工具才能复现服务挂死)</th>
+    </tr>
+    <tr>
+      <td style="width: 500px; height: 50px; text-align: left; color: #ee11ff;">
+        <button id="bRestNormalCall">正常接口调用</button> 结论: <br/><br/>
+        <button id="bRestRandomFail">随机成功与失败(状态)接口</button> 结论: <br/><br/>
+        <button id="bRestRandomTimeout">模拟随机超时(18S)接口</button> 结论: <br/><br/>
+        <button id="bRestRandomException">模拟随机异常接口</button> 结论: <br/>
+      </td>
+      <td style="width: 500px; height: 50px; text-align: left; color: #ee11ff;">
+        <button id="bHystrixNormalCall">正常接口调用</button> 结论: <br/><br/>
+        <button id="bHystrixRandomFail">随机成功与失败(状态)接口</button> 结论: <br/><br/>
+        <button id="bHystrixRandomTimeout">模拟随机超时(18S)接口</button> 结论: <br/><br/>
+        <button id="bHystrixRandomException">模拟随机异常接口</button> 结论: <br/>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        总体结论：。。。。。。。。。。。。。。。。。。。
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>
