@@ -18,5 +18,12 @@ public final class CSStringUtils {
         return s1 == null ? s2 == null : s1.equals(s2);
     }
 
-
+    /**
+     * 判断一个字符串是否为空
+     * @param string
+     * @return
+     */
+    public static boolean isEmpty(String string) {
+        return null == string || string.isEmpty();
+    }
 }
