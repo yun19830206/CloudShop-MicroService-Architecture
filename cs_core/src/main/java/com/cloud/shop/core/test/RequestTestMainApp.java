@@ -20,8 +20,14 @@ public class RequestTestMainApp {
          * 通用型 单接口 压力测试工具：
          *  1: 可设置并发线程数、线程增加间隔时间、请求循环次数、请求URL地址、每个请求间隔时间
          */
-        String requestUrl = "http://192.168.4.181:9002/order/get?orderId=4567" ;
-        concurrentOneRequestTest(3000,50, 50,2000, requestUrl);
+//        String requestUrl = "http://192.168.4.181:9002/order/get?orderId=4567" ;
+//        concurrentOneRequestTest(3000,50, 50,2000, requestUrl);
+
+
+        //测试一下OOM:unable to create new native thread异常 问题
+        String requestUrl = "http://101.200.39.33:9080/usedFiftySecondApi" ;
+        String testOrgAQUrl = "http://v4.faqrobot.org/servlet/apichat/v4?s=aq&question=月盈利计算方式&access_token=3QaOwh4swMTut2n8un0nMnrRaeVwKbnDQc1K1gTobXktq1RCKO&clientId=apiceshiyonghu1234&original=true" ;
+        concurrentOneRequestTest(900,1, 100,1, requestUrl);
 
 
 

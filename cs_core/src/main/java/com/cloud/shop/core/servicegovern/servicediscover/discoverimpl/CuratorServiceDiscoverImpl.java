@@ -72,7 +72,7 @@ public class CuratorServiceDiscoverImpl implements IServiceDiscover {
     private void initCuratorServiceDiscover() throws Exception{
         //初始化是有成员变量
         this.cachedServiceExecutors = Executors.newFixedThreadPool(30, namedThreadFactory);
-        JsonInstanceSerializer<InstanceDetails> jsonInstanceSerializer = new JsonInstanceSerializer<InstanceDetails>(InstanceDetails.class);
+        JsonInstanceSerializer<InstanceDetails> jsonInstanceSerializer = new JsonInstanceSerializer<>(InstanceDetails.class);
         this.serviceDiscovery = ServiceDiscoveryBuilder.builder(InstanceDetails.class)
                 .client(curatorFrameworkFactoryBean.getCuratorFramework())
                 .basePath(registerServiceRootPath)

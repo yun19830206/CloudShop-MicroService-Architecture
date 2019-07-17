@@ -34,8 +34,9 @@ public class InitBeanToSpringContext {
     @Bean
     public RestTemplate restTemplate() {
         SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
-        requestFactory.setReadTimeout(90000);   //一般应用不会配置这么长时间，这里配置20秒，是为了调试查看效果。
-        requestFactory.setConnectTimeout(90000);
+        requestFactory.setReadTimeout(900000);   //一般应用不会配置这么长时间，这里配置20秒，是为了调试查看效果。
+        requestFactory.setConnectTimeout(900000);
+
 
 
         // 添加转换器

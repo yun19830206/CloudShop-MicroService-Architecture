@@ -123,6 +123,7 @@ public class HystrixRPCCommand<T> extends HystrixCommand<T> {
                                         .withCircuitBreakerErrorThresholdPercentage(70)            //上面配置生效后，当错误比例>70%时开始熔断默认50%)
                                         .withExecutionIsolationThreadTimeoutInMilliseconds(1000)   //配置依赖超时时间,1000毫秒(默认1秒)
                                         .withExecutionIsolationThreadInterruptOnTimeout(true)      //使用线程隔离时，是否对命令执行超时的线程调用中断（Thread.interrupt()）操作.默认:true(在使用过程中发现并没有中断执行线程)
+                                //.withMetricsRollingPercentileBucketSize()
                         )
                         //指定线程池key，取代默认的分组key
                         .andThreadPoolKey(HystrixThreadPoolKey.Factory.asKey(serviceName.split("\\.", 2)[0]))

@@ -26,7 +26,7 @@ public class CloudShopRequestConcurrentTest {
 
         //线程池/队列/信号量是否饱满:调用一个耗时5秒的成功接口(Hystrix超时设置10秒,RestTemplate超时设置15秒),并发30个请求
         //结论:能看线程池满了之后的效果，直接调用fallBack()。但是不知道为什么是一共25个请求之后，后面5个再次执行run()方法了，况且发现队列设置没有体现出效果
-        appMain.debugHystrixCall(100,100, 20,"http://192.168.1.108:9002/order/get?orderId=4567",2000);
+        appMain.debugHystrixCall(500,100, 2000,"http://127.0.0.1:9002/order/get?orderId=4567",2000);
 
         while (true){
             Thread.sleep(1000*60*10);

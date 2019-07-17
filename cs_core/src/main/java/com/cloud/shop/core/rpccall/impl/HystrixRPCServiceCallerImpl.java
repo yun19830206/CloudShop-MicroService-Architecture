@@ -47,6 +47,7 @@ public class HystrixRPCServiceCallerImpl implements IRPCServiceCall {
      * @param fallbackRsp  降级响应
      * @return 响应对象 T
      */
+    @Override
     public <T> T call(String serviceName, Object request, Class<T> responseType, T fallbackRsp) {
         HystrixRPCCommand<T> hytrixRPCCommand = new HystrixRPCCommand<T>(serviceName, request, responseType, fallbackRsp, restTemplate, serviceDiscover, servicePRCMonitor, selector);
         try {
