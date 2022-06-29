@@ -43,7 +43,7 @@
         <mybatis-version>3.4.0</mybatis-version>
         <!-- Zookeeper\Curator 服务发现与注册 -->
         <curator-version>2.10.0</curator-version>
-        <zookeeper-version>3.4.6</zookeeper-version>
+        <zookeeper-version>3.4.14</zookeeper-version>
     </properties>
 
     <dependencies>
